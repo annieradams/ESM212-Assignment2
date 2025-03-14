@@ -2,11 +2,11 @@
 title: "Estimating forest carbon: a case study of oak woodlands at Sedgwick Ranch Reserve"
 subtitle: "ESM 212 Exercise 2"
 author: "Your name here"
-date: "2025-03-07"
+date: "2025-03-24"
 output: pdfl_document
 ---
 
-The purpose of this exercise is to acquaint you with the application of allometric equations for estimating forest carbon based on tree diameter measurements. You will use tree dbh data similar to what you collected during the second field trip. The data are provided in three files -- one for each plot. The calculations can be readily performed in Excel or R (R script provided). To estimate the amount of tree carbon in your plots, you need to do the following: \*Double-check dbh data for consistency in data formatting for the 3 plots
+The purpose of this exercise is to acquaint you with the application of allometric equations for estimating forest carbon based on tree diameter measurements. You will use tree dbh data similar to what you collected during the second field trip. The data are provided in three files -- one for each plot. The calculations can be readily performed in Excel or R (R script provided). To estimate the amount of tree carbon in your plots, you need to do the following:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
@@ -41,7 +41,13 @@ To estimate the amount of tree carbon in your plots, you need to do the followin
 
 $$bm = \exp(\beta_0 + \beta_1 \times \ln(dbh))$$
 
-Where bm = total aboveground biomass; $$\exp$$ = exponential function; $$beta_0$$ = -0.7152; $$beta_1$$ = 1.7029; $$\ln(dbh)$$ = natural log base e of the diameter at breast height of the tree.
+Where
+
+-   bm = total aboveground biomass
+-   $$exp$$ = exponential function
+-   $$beta_0$$ = -0.7152
+-   $$beta_1$$= 1.7029
+-   $$ln(dbh)$$ = natural log base e of the diameter at breast height of the tree.
 
 *Note: How do you handle multiple-trunked oaks? Calculate the total basal area by summing the calculated area of each trunk. Then calculate the equivalent DBH for a single-trunked tree with the same area. This has been done already in the data, but want you to take note of this.*
 
@@ -59,6 +65,10 @@ p1$bm_jenkins<-exp(b0_j+b1_j*log(p1$dbh))
 
 Repeat this for plot 2 and 3, and make a table of results
 
+```{r}
+
+```
+
 ## 2) For comparison, produce an alternative estimate of aboveground tree biomass for each tree using equation 7 provided in Table 2 from Karlik and Chojnacky (2014).
 
 $$bm = \beta_1 \times dbh^{\beta_2}$$
@@ -71,13 +81,17 @@ b1_kc<-0.068
 b2_kc<-2.569
 ```
 
-#Calculate aboveground biomass per tree
+#### Calculate aboveground biomass per tree
 
 ```{r}
 p1$bm_kc<-b1_kc*(p1$dbh^b2_kc)
 ```
 
 Repeat this for plot 2 and 3, and make a table of results
+
+```{r}
+
+```
 
 ## 3) Plot the dbh-biomass relationships for your different equations as illustrated in Jenkins et al. (2004), Figure 2 (pasted below). This will provide some sense of estimation uncertainty.
 
